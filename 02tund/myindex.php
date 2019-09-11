@@ -1,6 +1,11 @@
 <?php
-  $username = "Henryyyyy Pajuri";
+  $username = "Henry Pajuri";
   $fulltimenow = date("d.m.Y H:i:s");
+  $hournow = date("H");
+  $partofday = "hägune aeg";
+  if($hournow < 8){
+    $partofday = "hommik";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="et">
@@ -21,9 +26,16 @@
   <a href="http://greeny.cs.tlu.ee/~henrypaj/">
 <?php
   echo "See on minu esimene PHP!</p>";
-  echo "<p>Lehe avamise hetkel oli " .$fulltimenow .".</p>";
+  echo "<p>Lehe avamise hetkel oli aeg: " .$fulltimenow .", " .$partofday . " .</p>";
 ?>
-
-
+<ul>
+<li>Git push</li>
+<li>Git config</li>
+<li>-ls</li>
+<li>WinSCP</li>
+<li>Lin2.Tlu.ee</li>
+<li>pwd</li>
+<li>cd</li>
+<li>ls -la</li>
 </body>
 </html>
