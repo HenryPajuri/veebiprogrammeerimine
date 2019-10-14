@@ -2,7 +2,7 @@
   require("../../../Config_19.php");
   require("functions_main.php");
   require("functions_user.php");
-  $database = "f19_henry_pa_1";
+  $database = "if19_henry_pa_1";
   
   //kui pole sisseloginud
   if(!isset($_SESSION["userID"])){
@@ -31,7 +31,7 @@
 	$_SESSION["txtColor"] = $_POST["txtcolor"];
   } else {
 	$myProfileDesc = showMyDesc();
-	if($myProfileDesc != ""){
+	if(!empty($myProfileDesc)){
 	  $myDescription = $myProfileDesc;
     }
   }
@@ -41,26 +41,26 @@
 
 
 <body>
-  <?php
+   <?php
     echo "<h1>" .$userName ." koolitöö leht</h1>";
   ?>
   <p>See leht on loodud koolis õppetöö raames
   ja ei sisalda tõsiseltvõetavat sisu!</p>
   <hr>
-  <p><a href="?logout=1">Logi Välja!</a> <a href="userprofile.php">Kasutajaprofiil</a></p>
+  <p><a href="?logout=1">Logi välja!</a> | Tagasi <a href="home.php">avalehele </a> Vaheta <a href="password_change.php"> salasõna </a></p>
+  
+  
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	  <label>Minu kirjeldus</label><br>
-	  <textarea rows="10" cols="80" name="description"><?php echo $mydescription; ?></textarea>
+	  <textarea rows="10" cols="80" name="description" placeholder="Lisa siia oma tutvustus ..."><?php echo $myDescription; ?></textarea>
 	  <br>
-	  <label>Minu valitud taustavärv: </label><input name="bgcolor" type="color" value="<?php echo $mybgcolor; ?>"><br>
-	  <label>Minu valitud tekstivärv: </label><input name="txtcolor" type="color" value="<?php echo $mytxtcolor; ?>"><br>
-	  <input name="submitProfile" type="submit" value="Salvesta profiil">
+	  <label>Minu valitud taustavärv: </label><input name="bgcolor" type="color" value="<?php echo $_SESSION["bgColor"]; ?>"><br>
+	  <label>Minu valitud tekstivärv: </label><input name="txtcolor" type="color" value="<?php echo $_SESSION["txtColor"]; ?>"><br>
+	  <input name="submitProfile" type="submit" value="Salvesta profiil"><span><?php echo $notice; ?></span>
 	</form>
-
+  
 </body>
-
 </html>
-
 
 
 
